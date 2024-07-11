@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="clock">
+            <ul>
+                <li id="hours">00</li>
+                <li id="points">:</li>
+                <li id="minutes">00</li>
+                <li id="Mode">AM</li>
+            </ul>
+        </div>
+        <div class="button">
+            <button id="openModalButton">
+                Set time
+            </button>
+        </div>
+    </div>
+
+    
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="carousel">
+                <div class="carousel-item">
+                    <div class="scroll-container" id="hourCarousel">
+                        
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="scroll-container" id="minuteCarousel">
+                        
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="scroll-container" id="amPmCarousel">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button id="acceptButton" class="accept-button">Set time</button>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: bold 12px Gotham, sans-serif;
+    background-color: black;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clock {
+    border: 1px solid #606060;
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #222222;
+}
+
+.clock ul {
+    list-style: none;
+    display: flex;
+    font-size: 90px;
+    gap: 15px;
+}
+
+.button {
+    margin-top: 20px; 
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.button button {
+    background-color: #222222;
+    padding: 20px;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid #606060;
+    width: 200px; 
+    font-size: 16px; 
+}
+
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+.modal-content {
+    background-color: #333;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    height: 200px;
+    width: 80%; 
+    max-width: 800px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Carousel styles */
+.carousel {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.carousel-item {
+    position: relative;
+    width: 100%;
+    height: 120px; 
+    overflow: hidden;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-y: hidden; 
+    scroll-snap-type: y mandatory; 
+    height: 100%; 
+    width: 100%; 
+    position: relative;
+    scroll-behavior: smooth; 
+}
+
+.scroll-container-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none; 
+}
+
+.scroll-container {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+
+.scroll-item {
+    flex: 0 0 auto;
+    height: 60px; 
+    font-size: 36px;
+    background-color: #555;
+    color: white;
+    border-bottom: 1px solid #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    scroll-snap-align: center; 
+}
+
+/* Elementos clonados para carrusel infinito */
+.scroll-item.clone {
+    background-color: #444;
+    color: #bbb;
+}
+
+.scroll-item.selected {
+    background-color: white;
+    color: black;
+}
+
+
+.accept-button {
+    background-color: #4CAF50; 
+    color: white; 
+    border: none;
+    border-radius: 10px;
+    padding: 15px 30px;
+    font-size: 20px;
+    font: bold 12px Gotham, sans-serif;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%); 
+}
+
+.accept-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
