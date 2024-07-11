@@ -1,39 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('myModal');
     const durationModal = document.getElementById('durationModal');
-    const openModalButton = document.getElementById('openModalButton');
     const openDurationModalButton = document.getElementById('openDurationModalButton');
-    const closeButton = document.getElementById('closeModal');
     const closeDurationButton = document.getElementById('closeDurationModal');
-    const setTimeButton = document.getElementById('setTimeButton');
     const setDurationButton = document.getElementById('setDurationButton');
-    const hoursElement = document.getElementById('hours');
-    const minutesElement = document.getElementById('minutes');
-    const modeElement = document.getElementById('Mode');
+    const currentHoursElement = document.getElementById('currentHours');
+    const currentMinutesElement = document.getElementById('currentMinutes');
+    const currentModeElement = document.getElementById('currentMode');
     const endHoursElement = document.getElementById('endHours');
     const endMinutesElement = document.getElementById('endMinutes');
     const endModeElement = document.getElementById('endMode');
 
-    let selectedHour = '00';
-    let selectedMinute = '00';
-    let selectedMode = 'AM';
     let selectedDurationHour = '00';
     let selectedDurationMinute = '00';
 
-    // Abrir modal para seleccionar hora
-    openModalButton.onclick = function() {
-        modal.style.display = 'block';
-    }
+    // Función para actualizar el reloj con la hora actual
+    const updateClock = () => {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const isPM = hours >= 12;
+
+        const displayHours = String(hours % 12 || 12).padStart(2, '0');
+        const displayMinutes = String(minutes).padStart(2, '0');
+        const displayMode = isPM ? 'PM' : 'AM';
+
+        currentHoursElement.textContent = displayHours;
+        currentMinutesElement.textContent = displayMinutes;
+        currentModeElement.textContent = displayMode;
+    };
+
+    // Llamar a updateClock cada minuto para mantener la hora actualizada
+    updateClock();
+    setInterval(updateClock, 60000);
 
     // Abrir modal para seleccionar duración
     openDurationModalButton.onclick = function() {
-        modal.style.display = 'none';
         durationModal.style.display = 'block';
-    }
-
-    // Cerrar modal para seleccionar hora
-    closeButton.onclick = function() {
-        modal.style.display = 'none';
     }
 
     // Cerrar modal para seleccionar duración
@@ -41,11 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         durationModal.style.display = 'none';
     }
 
-    // Cerrar modales cuando se hace clic fuera de ellos
+    // Cerrar modal cuando se hace clic fuera de él
     window.onclick = function(event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
         if (event.target === durationModal) {
             durationModal.style.display = 'none';
         }
@@ -100,21 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const hourItems = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
-    const minuteItems = Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0'));
-    const amPmItems = ['AM', 'PM'];
     const durationHourItems = Array.from({ length: 24 }, (_, i) => i.toString().padStart(2, '0'));
     const durationMinuteItems = Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0'));
 
-    const hourCarousel = document.getElementById('hourCarousel');
-    const minuteCarousel = document.getElementById('minuteCarousel');
-    const amPmCarousel = document.getElementById('amPmCarousel');
     const durationHourCarousel = document.getElementById('durationHourCarousel');
     const durationMinuteCarousel = document.getElementById('durationMinuteCarousel');
 
-    populateCarousel(hourCarousel, hourItems, selectedHour, (value) => selectedHour = value);
-    populateCarousel(minuteCarousel, minuteItems, selectedMinute, (value) => selectedMinute = value);
-    populateCarousel(amPmCarousel, amPmItems, selectedMode, (value) => selectedMode = value);
     populateCarousel(durationHourCarousel, durationHourItems, selectedDurationHour, (value) => selectedDurationHour = value);
     populateCarousel(durationMinuteCarousel, durationMinuteItems, selectedDurationMinute, (value) => selectedDurationMinute = value);
 
@@ -138,22 +128,17 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     };
 
-    setTimeButton.onclick = function() {
-        durationModal.style.display = 'block';
-    }
-
     setDurationButton.onclick = function() {
-        hoursElement.textContent = selectedHour;
-        minutesElement.textContent = selectedMinute;
-        modeElement.textContent = selectedMode;
+        const startHour = currentHoursElement.textContent;
+        const startMinute = currentMinutesElement.textContent;
+        const mode = currentModeElement.textContent;
 
-        const endTime = calculateEndTime(selectedHour, selectedMinute, selectedMode, selectedDurationHour, selectedDurationMinute);
+        const endTime = calculateEndTime(startHour, startMinute, mode, selectedDurationHour, selectedDurationMinute);
 
         endHoursElement.textContent = endTime.hours;
         endMinutesElement.textContent = endTime.minutes;
         endModeElement.textContent = endTime.mode;
 
-        modal.style.display = 'none';
         durationModal.style.display = 'none';
     }
 });

@@ -10,38 +10,17 @@
     <div class="container">
         <div class="clock">
             <ul>
-                <li id="hours">00</li>
+                <li id="currentHours">--</li>
                 <li id="points">:</li>
-                <li id="minutes">00</li>
-                <li id="Mode">AM</li>
+                <li id="currentMinutes">--</li>
+                <li id="currentMode">--</li>
             </ul>
         </div>
         <div id="endTimeDisplay" class="end-time-display">
             End Time: <span id="endHours">--</span>:<span id="endMinutes">--</span> <span id="endMode">--</span>
         </div>
         <div class="button">
-            <button id="openModalButton">Set Time</button>
             <button id="openDurationModalButton">Set Duration</button>
-        </div>
-    </div>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
-            <div class="carousel">
-                <div class="carousel-item">
-                    <div class="scroll-container" id="hourCarousel"></div>
-                </div>
-                <div class="carousel-item">
-                    <div class="scroll-container" id="minuteCarousel"></div>
-                </div>
-                <div class="carousel-item">
-                    <div class="scroll-container" id="amPmCarousel"></div>
-                </div>
-            </div>
-            <div>
-                <button id="setTimeButton" class="accept-button">Set Time</button>
-            </div>
         </div>
     </div>
 
