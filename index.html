@@ -16,37 +16,49 @@
                 <li id="Mode">AM</li>
             </ul>
         </div>
+        <div id="endTimeDisplay" class="end-time-display">
+            End Time: <span id="endHours">--</span>:<span id="endMinutes">--</span> <span id="endMode">--</span>
+        </div>
         <div class="button">
-            <button id="openModalButton">
-                Set time
-            </button>
+            <button id="openModalButton">Set Time</button>
+            <button id="openDurationModalButton">Set Duration</button>
         </div>
     </div>
 
-    
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close" id="closeModal">&times;</span>
             <div class="carousel">
                 <div class="carousel-item">
-                    <div class="scroll-container" id="hourCarousel">
-                        
-                    </div>
+                    <div class="scroll-container" id="hourCarousel"></div>
                 </div>
                 <div class="carousel-item">
-                    <div class="scroll-container" id="minuteCarousel">
-                        
-                    </div>
+                    <div class="scroll-container" id="minuteCarousel"></div>
                 </div>
                 <div class="carousel-item">
-                    <div class="scroll-container" id="amPmCarousel">
-                    </div>
+                    <div class="scroll-container" id="amPmCarousel"></div>
                 </div>
             </div>
             <div>
-                <button id="acceptButton" class="accept-button">Set time</button>
+                <button id="setTimeButton" class="accept-button">Set Time</button>
             </div>
-            
+        </div>
+    </div>
+
+    <div id="durationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeDurationModal">&times;</span>
+            <div class="carousel">
+                <div class="carousel-item">
+                    <div class="scroll-container" id="durationHourCarousel"></div>
+                </div>
+                <div class="carousel-item">
+                    <div class="scroll-container" id="durationMinuteCarousel"></div>
+                </div>
+            </div>
+            <div>
+                <button id="setDurationButton" class="accept-button">Set Duration</button>
+            </div>
         </div>
     </div>
 
